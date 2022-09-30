@@ -25,8 +25,8 @@ public final class Snort extends JavaPlugin implements Listener {
 
     @EventHandler
     public void PlayerInteractEvent(PlayerInteractEvent e) {
-        PotionEffect Weakness=new PotionEffect(PotionEffectType.WEAKNESS,1200,3);
-        PotionEffect Slowness=new PotionEffect(PotionEffectType.SLOW,1200,3);
+        PotionEffect Weakness=new PotionEffect(PotionEffectType.WEAKNESS,2400,5);
+        PotionEffect Slowness=new PotionEffect(PotionEffectType.SLOW,2400,3);
         PotionEffect Nausea=new PotionEffect(PotionEffectType.CONFUSION,2400,10);
         if (e.hasItem()) {
             if (Objects.requireNonNull(e.getItem()).getType().equals(Material.AMETHYST_SHARD) && Objects.requireNonNull(e.getPlayer().getInventory().getItemInMainHand().getItemMeta()).getDisplayName().equals("Blue Sky")) {
