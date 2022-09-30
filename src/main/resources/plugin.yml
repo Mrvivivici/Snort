@@ -1,0 +1,4 @@
+name: Snort
+version: '${project.version}'
+main: me.vivii.snort.Snort
+api-version: 1.19
