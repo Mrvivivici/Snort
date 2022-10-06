@@ -29,13 +29,27 @@ public final class Snort extends JavaPlugin implements Listener {
         PotionEffect Weakness = new PotionEffect(PotionEffectType.WEAKNESS, 2400, 3);
         PotionEffect Slowness = new PotionEffect(PotionEffectType.SLOW, 2400, 1);
         PotionEffect Nausea = new PotionEffect(PotionEffectType.CONFUSION, 2400, 5);
-        if (e.getAction()== Action.RIGHT_CLICK_AIR || e.getAction()== Action.RIGHT_CLICK_BLOCK ) {
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if (e.hasItem()) {
+                if (Objects.requireNonNull(e.getItem()).getType().equals(Material.AMETHYST_SHARD) && Objects.requireNonNull(e.getPlayer().getInventory().getItemInMainHand().getItemMeta()).getDisplayName().equals("Blue Sky")) {
+                    if (!Objects.requireNonNull(e.getClickedBlock()).getType().isInteractable()) {
+                        e.getPlayer().getInventory().getItemInMainHand().setAmount(e.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
+                        e.getPlayer().addPotionEffect(Weakness);
+                        e.getPlayer().addPotionEffect(Slowness);
+                        e.getPlayer().addPotionEffect(Nausea);
+
+                    }
+                }
+            }
+        }
+        if (e.getAction() == Action.RIGHT_CLICK_AIR) {
             if (e.hasItem()) {
                 if (Objects.requireNonNull(e.getItem()).getType().equals(Material.AMETHYST_SHARD) && Objects.requireNonNull(e.getPlayer().getInventory().getItemInMainHand().getItemMeta()).getDisplayName().equals("Blue Sky")) {
                     e.getPlayer().getInventory().getItemInMainHand().setAmount(e.getPlayer().getInventory().getItemInMainHand().getAmount() - 1);
                     e.getPlayer().addPotionEffect(Weakness);
                     e.getPlayer().addPotionEffect(Slowness);
                     e.getPlayer().addPotionEffect(Nausea);
+
                 }
             }
         }
